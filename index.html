@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="Afiya – Moments that matter. Community Events für Frauen in der Deutschschweiz." />
+  <title>Afiya | Template</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Bootstrap (CDN, no download needed) -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+    crossorigin="anonymous"
+  />
+
+  <style>
+    /* =========================================================
+       AFIYA – Global Template (Logo-aligned: calm luxury teal)
+       Use this file as base for: index, contact, legal pages
+       ========================================================= */
+
+    :root{
+      /* Brand */
+      --primary:#006B7A;          /* Logo teal */
+      --primary-900:#004E59;      /* Deep teal */
+      --mint:#D6F2F1;             /* soft highlight */
+      --bg:#FBFBFA;               /* off-white */
+      --text:#0B0B0F;
+      --muted: rgba(11,11,15,.68);
+
+      /* UI */
+      --radius-xl: 26px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+
+      --shadow-sm: 0 8px 20px rgba(11,11,15,.06);
+      --shadow-md: 0 14px 40px rgba(11,11,15,.10);
+      --shadow-lg: 0 24px 80px rgba(11,11,15,.14);
+
+      --border: 1px solid rgba(11,11,15,.08);
+      --focus: 0 0 0 3px rgba(0,107,122,.22);
+    }
+
+    html{ scroll-behavior:smooth; }
+    body{
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    /* Typography */
+    h1,h2,h3,h4,h5{
+      font-family: Sora, Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      letter-spacing: -0.03em;
+    }
+    .kicker{
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .section-title{
+      font-weight: 800;
+      line-height: 1.08;
+    }
+    .lead-soft{
+      color: rgba(11,11,15,.74);
+      line-height: 1.75;
+      font-size: 18px;
+    }
+
+    /* Layout spacing */
+    .section{
+      padding: 90px 0;
+    }
+    @media (max-width: 767.98px){
+      .section{ padding: 60px 0; }
+    }
+
+    /* Navbar (glass) */
+    .nav-glass{
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(251,251,250,.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(11,11,15,.08);
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      text-decoration:none !important;
+    }
+    .brand-mark{
+      width: 34px; height: 34px;
+      border-radius: 999px;
+      background:
+        radial-gradient(18px 18px at 65% 40%, rgba(255,255,255,.98) 0 70%, transparent 72%),
+        radial-gradient(30px 30px at 42% 52%, rgba(255,255,255,.98) 0 68%, transparent 70%),
+        linear-gradient(180deg, var(--primary), var(--primary-900));
+      box-shadow: var(--shadow-sm);
+    }
+    .brand-name{
+      font-family: Sora, Inter, sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      font-size: 22px;
+      color: var(--text);
+    }
+    .brand-name span{ color: var(--primary); }
+
+    .navbar-light .navbar-nav .nav-link{
+      color: rgba(11,11,15,.82);
+      font-weight: 700;
+    }
+    .navbar-light .navbar-nav .nav-link:hover{
+      color: var(--primary);
+    }
+
+    /* Buttons */
+    .btn{
+      border-radius: 999px !important;
+      padding: 12px 18px !important;
+      font-weight: 800;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .btn:focus{ outline:none !important; box-shadow: var(--focus) !important; }
+    .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow-md); }
+
+    .btn-primary{
+      background: var(--primary) !important;
+      border-color: var(--primary) !important;
+    }
+    .btn-primary:hover{
+      background: var(--primary-900) !important;
+      border-color: var(--primary-900) !important;
+    }
+    .btn-outline-primary{
+      border-color: rgba(0,107,122,.28) !important;
+      color: var(--primary) !important;
+      background: transparent !important;
+    }
+    .btn-outline-primary:hover{
+      background: var(--primary) !important;
+      color: #fff !important;
+      border-color: var(--primary) !important;
+    }
+
+    /* Hero (orbit glow) */
+    .hero{
+      padding: 90px 0;
+      background:
+        radial-gradient(900px 520px at 10% 20%, rgba(0,107,122,.18), transparent 60%),
+        radial-gradient(700px 420px at 90% 0%, rgba(214,242,241,.80), transparent 55%),
+        var(--bg);
+    }
+    @media (max-width: 767.98px){
+      .hero{ padding: 64px 0; }
+    }
+    .hero-card{
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid rgba(11,11,15,.06);
+      background: #fff;
+      box-shadow: var(--shadow-lg);
+    }
+    .hero-card img{
+      width:100%;
+      height: 420px;
+      object-fit: cover;
+      display:block;
+    }
+    @media (max-width: 575.98px){
+      .hero-card img{ height: 320px; }
+    }
+
+    /* Cards */
+    .card-soft{
+      border-radius: var(--radius-lg);
+      border: var(--border);
+      background: rgba(255,255,255,.88);
+      box-shadow: var(--shadow-sm);
+      padding: 20px;
+      height: 100%;
+    }
+    .card-soft.hoverable{
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .card-soft.hoverable:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(0,107,122,.30);
+    }
+
+    /* Badge */
+    .badge-soft{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(0,107,122,.10);
+      border: 1px solid rgba(0,107,122,.18);
+      color: rgba(11,11,15,.80);
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    /* Event card */
+    .event-media{
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid rgba(11,11,15,.06);
+      box-shadow: var(--shadow-sm);
+      background:#fff;
+    }
+    .event-media img{
+      width:100%;
+      height: 240px;
+      object-fit: cover;
+      display:block;
+      transition: transform .35s ease;
+    }
+    .event-media:hover img{ transform: scale(1.03); }
+
+    /* Gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 14px;
+    }
+    .g-item{
+      grid-column: span 4;
+      border-radius: var(--radius-xl);
+      overflow:hidden;
+      border: 1px solid rgba(11,11,15,.06);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      background: #fff;
+    }
+    .g-item img{
+      width:100%;
+      height: 280px;
+      object-fit: cover;
+      display:block;
+      transition: transform .35s ease;
+    }
+    .g-item:hover img{ transform: scale(1.03); }
+    .g-item::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 40%, rgba(0,0,0,.38) 100%);
+      opacity:0;
+      transition: opacity .25s ease;
+    }
+    .g-item:hover::after{ opacity:1; }
+    .g-caption{
+      position:absolute;
+      left:14px; right:14px; bottom:12px;
+      color:#fff;
+      font-weight: 800;
+      opacity:0;
+      transform: translateY(4px);
+      transition: opacity .25s ease, transform .25s ease;
+      z-index:2;
+    }
+    .g-item:hover .g-caption{ opacity:1; transform: translateY(0); }
+
+    @media (max-width: 991.98px){
+      .g-item{ grid-column: span 6; }
+    }
+    @media (max-width: 575.98px){
+      .g-item{ grid-column: span 12; }
+    }
+
+    /* Forms */
+    .form-control{
+      border-radius: 14px;
+      border: 1px solid rgba(11,11,15,.12);
+      padding: 12px 14px;
+      height: auto;
+      box-shadow: none;
+    }
+    .form-control:focus{
+      border-color: rgba(0,107,122,.45);
+      box-shadow: var(--focus);
+    }
+    label{ font-weight: 800; }
+
+    /* Map */
+    .map-embed{
+      border-radius: var(--radius-xl);
+      overflow:hidden;
+      border: 1px solid rgba(11,11,15,.06);
+      box-shadow: var(--shadow-sm);
+      background:#fff;
+    }
+    .map-embed iframe{ width:100%; height: 420px; border:0; display:block; }
+    @media (max-width: 575.98px){ .map-embed iframe{ height: 320px; } }
+
+    /* Footer */
+    footer{
+      background: linear-gradient(180deg, var(--primary-900), #043b43);
+      color: rgba(255,255,255,.82);
+      padding: 56px 0;
+    }
+    footer h5{
+      color:#fff;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    footer a{
+      color: rgba(255,255,255,.85);
+      text-decoration:none;
+    }
+    footer a:hover{ color: #fff; text-decoration: underline; }
+
+    /* Back to top */
+    .back-to-top{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(11,11,15,.92);
+      color:#fff;
+      box-shadow: var(--shadow-md);
+      z-index: 9999;
+      text-decoration:none !important;
+    }
+
+    /* A11y reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <div class="nav-glass">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light px-0">
+        <a class="brand" href="index.html" aria-label="Afiya Home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name">Afiya<span>.</span></span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMain"
+                aria-controls="navMain" aria-expanded="false" aria-label="Navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navMain">
+          <ul class="navbar-nav ml-auto align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="#upcoming">Kommende Events</a></li>
+            <li class="nav-item"><a class="nav-link" href="#past">Vergangene Events</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">Über uns</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Kontakt</a></li>
+            <li class="nav-item ml-lg-3 mt-2 mt-lg-0">
+              <a class="btn btn-primary" href="#tickets"><i class="ri-ticket-2-line"></i> Tickets</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="row align-items-center justify-content-between">
+        <div class="col-lg-5 mb-4 mb-lg-0">
+          <div class="kicker">Moments that matter</div>
+          <h1 class="section-title mt-2">Ein Raum für echte Verbindung.</h1>
+          <p class="lead-soft mt-3">
+            Afiya ist eine Community für Frauen in der Deutschschweiz – kuratierte Events, ehrliche Gespräche
+            und Begegnungen auf Augenhöhe.
+          </p>
+
+          <div class="d-flex flex-column flex-sm-row mt-4">
+            <a class="btn btn-primary" href="#tickets"><i class="ri-ticket-2-line"></i> Tickets kaufen</a>
+            <a class="btn btn-outline-primary ml-sm-2 mt-2 mt-sm-0" href="#upcoming">
+              <i class="ri-calendar-event-line"></i> Events ansehen
+            </a>
+          </div>
+
+          <div class="mt-4">
+            <span class="badge-soft"><i class="ri-map-pin-2-line"></i> Region Zürich · Deutschschweiz</span>
+            <span class="badge-soft ml-2"><i class="ri-group-line"></i> Kleine Gruppen · curated</span>
+          </div>
+        </div>
+
+        <div class="col-lg-6">
+          <!-- Replace with your best hero image -->
+          <div class="hero-card">
+            <img src="images/afiya_hero.jpeg" alt="Afiya Event Moment">
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- UPCOMING EVENTS -->
+  <section class="section" id="upcoming">
+    <div class="container">
+      <div class="row justify-content-center mb-4">
+        <div class="col-lg-8 text-center">
+          <div class="kicker">Kommende Events</div>
+          <h2 class="section-title mt-2">Sei beim nächsten Moment dabei.</h2>
+          <p class="lead-soft mt-3">Wähle ein Event – Ticketkauf direkt via Stripe Payment Link.</p>
+        </div>
+      </div>
+
+      <div class="row" id="tickets">
+        <!-- EVENT 1 -->
+        <div class="col-md-4 mb-4">
+          <div class="card-soft hoverable">
+            <div class="event-media mb-3">
+              <img src="images/event.jpg" alt="Afiya Brunch">
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="badge-soft"><i class="ri-calendar-event-line"></i> So · 11:00</span>
+              <span class="badge-soft"><i class="ri-map-pin-2-line"></i> Zürich</span>
+            </div>
+            <h3 class="mt-3" style="font-weight:800;">Afiya Brunch</h3>
+            <p class="lead-soft" style="font-size:16px;">
+              Entspanntes Kennenlernen in kleiner Runde – warm, leicht, verbindend.
+            </p>
+            <!-- Replace href with Stripe Payment Link -->
+            <a class="btn btn-primary btn-block" href="https://stripe.com" target="_blank" rel="noopener">
+              Tickets kaufen
+            </a>
+          </div>
+        </div>
+
+        <!-- EVENT 2 -->
+        <div class="col-md-4 mb-4">
+          <div class="card-soft hoverable">
+            <div class="event-media mb-3">
+              <img src="images/women.jpg" alt="Dinner & Talk">
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="badge-soft"><i class="ri-calendar-event-line"></i> Fr · 19:00</span>
+              <span class="badge-soft"><i class="ri-map-pin-2-line"></i> Winterthur</span>
+            </div>
+            <h3 class="mt-3" style="font-weight:800;">Dinner & Talk</h3>
+            <p class="lead-soft" style="font-size:16px;">
+              Ein Abend für echte Gespräche – ohne Druck, ohne Erwartungen.
+            </p>
+            <a class="btn btn-primary btn-block" href="https://stripe.com" target="_blank" rel="noopener">
+              Tickets kaufen
+            </a>
+          </div>
+        </div>
+
+        <!-- EVENT 3 -->
+        <div class="col-md-4 mb-4">
+          <div class="card-soft hoverable">
+            <div class="event-media mb-3">
+              <img src="images/ideas.jpg" alt="Community Night">
+            </div>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="badge-soft"><i class="ri-calendar-event-line"></i> Do · 18:30</span>
+              <span class="badge-soft"><i class="ri-map-pin-2-line"></i> Baden</span>
+            </div>
+            <h3 class="mt-3" style="font-weight:800;">Community Night</h3>
+            <p class="lead-soft" style="font-size:16px;">
+              Impuls + Austausch + neue Connections – curated & cozy.
+            </p>
+            <a class="btn btn-primary btn-block" href="https://stripe.com" target="_blank" rel="noopener">
+              Tickets kaufen
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PAST EVENTS (GALLERY) -->
+  <section class="section" id="past" style="background: #fff;">
+    <div class="container">
+      <div class="row justify-content-center mb-4">
+        <div class="col-lg-8 text-center">
+          <div class="kicker">Vergangene Events</div>
+          <h2 class="section-title mt-2">Rückblicke, die bleiben.</h2>
+          <p class="lead-soft mt-3">Galerie (Lightbox-ready). Du kannst später Fancybox integrieren.</p>
+        </div>
+      </div>
+
+      <div class="gallery">
+        <!-- Replace images + captions -->
+        <a class="g-item" href="images/afiya_hero.jpeg" target="_blank" rel="noopener">
+          <img src="images/afiya_hero.jpeg" alt="Afiya Event">
+          <div class="g-caption">Vision Board Evening</div>
+        </a>
+        <a class="g-item" href="images/women.jpg" target="_blank" rel="noopener">
+          <img src="images/women.jpg" alt="Afiya Event">
+          <div class="g-caption">Dinner & Talk</div>
+        </a>
+        <a class="g-item" href="images/event.jpg" target="_blank" rel="noopener">
+          <img src="images/event.jpg" alt="Afiya Event">
+          <div class="g-caption">Afiya Brunch</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" id="about">
+    <div class="container">
+      <div class="row align-items-start">
+        <div class="col-lg-5 mb-4 mb-lg-0">
+          <div class="kicker">Über Afiya</div>
+          <h2 class="section-title mt-2">Räume für echte Verbindung.</h2>
+          <p class="lead-soft mt-3">
+            Afiya wurde gegründet, um Frauen einen Ort zu bieten, an dem Austausch respektvoll, entspannt und
+            bereichernd stattfindet – in kleinen, kuratierten Settings.
+          </p>
+          <a class="btn btn-outline-primary mt-3" href="#contact"><i class="ri-mail-line"></i> Kontakt</a>
+        </div>
+
+        <div class="col-lg-7">
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="card-soft hoverable">
+                <span class="badge-soft"><i class="ri-sparkling-2-line"></i> Erlebnisse</span>
+                <h4 class="mt-3" style="font-weight:800;">Ausgewählte Treffen</h4>
+                <p class="lead-soft" style="font-size:16px;">
+                  Brunches, Dinner, Themenabende – in einer Atmosphäre, die leicht ist und trägt.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="card-soft hoverable">
+                <span class="badge-soft"><i class="ri-group-line"></i> Zugehörigkeit</span>
+                <h4 class="mt-3" style="font-weight:800;">Community</h4>
+                <p class="lead-soft" style="font-size:16px;">
+                  Ein Netzwerk von Frauen, die offen für Neues sind und echte Connections suchen.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="card-soft hoverable">
+                <span class="badge-soft"><i class="ri-shield-check-line"></i> Vertrauen</span>
+                <h4 class="mt-3" style="font-weight:800;">Safe Space</h4>
+                <p class="lead-soft" style="font-size:16px;">
+                  Kleine Gruppen, klare Werte, respektvoller Austausch – du bringst dich ein, wie es passt.
+                </p>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="card-soft hoverable">
+                <span class="badge-soft"><i class="ri-user-heart-line"></i> Authentizität</span>
+                <h4 class="mt-3" style="font-weight:800;">Ganz du</h4>
+                <p class="lead-soft" style="font-size:16px;">
+                  Deutschsprachig, nahbar, ehrlich – damit Begegnungen natürlich entstehen.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact" style="background: #fff;">
+    <div class="container">
+      <div class="row justify-content-center mb-4">
+        <div class="col-lg-8 text-center">
+          <div class="kicker">Kontakt</div>
+          <h2 class="section-title mt-2">Schreib uns</h2>
+          <p class="lead-soft mt-3">Fragen, Kooperationen oder Membership – wir freuen uns auf deine Nachricht.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <div class="card-soft">
+            <div class="d-flex align-items-start">
+              <div class="badge-soft" style="margin-right:12px;"><i class="ri-message-3-line"></i> WhatsApp</div>
+              <div></div>
+            </div>
+            <p class="lead-soft" style="font-size:16px; margin-top:12px;">
+              Für Updates & schnelle Fragen:
+            </p>
+            <a class="btn btn-primary btn-block" href="https://chat.whatsapp.com/LEN0tI0IkzkL6HXBFnaaAi?mode=ems_wa_c" target="_blank" rel="noopener">
+              Community beitreten
+            </a>
+
+            <hr style="border-color: rgba(11,11,15,.10); margin: 18px 0;">
+
+            <div class="badge-soft"><i class="ri-mail-line"></i> E-Mail</div>
+            <p class="mt-2 mb-0"><a href="mailto:hello@afiya.ch">hello@afiya.ch</a></p>
+            <small style="color: var(--muted);">Antwort meist innerhalb von 48h.</small>
+          </div>
+        </div>
+
+        <div class="col-lg-8">
+          <div class="card-soft mb-4">
+            <h4 style="font-weight:800;">Kontaktformular</h4>
+            <p class="lead-soft" style="font-size:16px;">(Frontend Demo – später an Backend/Formspree/Netlify hängen.)</p>
+
+            <form id="contactForm" action="#" method="post" novalidate>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="firstName">Vorname</label>
+                  <input class="form-control" id="firstName" name="firstName" placeholder="Dein Vorname" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="lastName">Nachname</label>
+                  <input class="form-control" id="lastName" name="lastName" placeholder="Dein Nachname" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="email">E-Mail</label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="name@domain.ch" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="topic">Thema</label>
+                  <select class="form-control" id="topic" name="topic" required>
+                    <option value="" selected disabled>Bitte wählen…</option>
+                    <option>Frage zu Events</option>
+                    <option>Kooperation / Partnerschaft</option>
+                    <option>Membership</option>
+                    <option>Presse / Media</option>
+                    <option>Sonstiges</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Nachricht</label>
+                <textarea class="form-control" id="message" name="message" rows="5" placeholder="Deine Nachricht…" required></textarea>
+                <small style="color: var(--muted);">Bitte keine sensiblen Daten senden.</small>
+              </div>
+
+              <button class="btn btn-primary" type="submit">Nachricht senden</button>
+            </form>
+          </div>
+
+          <div class="map-embed">
+            <iframe
+              title="Afiya Standort (Zürich, Schweiz)"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=Z%C3%BCrich%2C%20Schweiz&output=embed"></iframe>
+          </div>
+          <small style="color: var(--muted);" class="d-block mt-2">
+            Hinweis: Der Ort variiert je nach Event. Details findest du bei jedem Ticket.
+          </small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <h5>Afiya</h5>
+          <p style="color: rgba(255,255,255,.76); line-height:1.7;">
+            Afiya ist eine Community, die Frauen zusammenbringt – für Momente, die im Alltag oft fehlen.
+          </p>
+          <a class="btn btn-outline-primary" style="border-color: rgba(255,255,255,.35) !important; color:#fff !important;"
+             href="https://chat.whatsapp.com/LEN0tI0IkzkL6HXBFnaaAi?mode=ems_wa_c" target="_blank" rel="noopener">
+            <i class="ri-whatsapp-line"></i> Community beitreten
+          </a>
+        </div>
+
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <h5>Navigation</h5>
+          <ul class="list-unstyled mb-0" style="line-height:2;">
+            <li><a href="#upcoming">Kommende Events</a></li>
+            <li><a href="#past">Vergangene Events</a></li>
+            <li><a href="#about">Über uns</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4">
+          <h5>Rechtliches</h5>
+          <ul class="list-unstyled mb-0" style="line-height:2;">
+            <li><a href="agbs.html">AGBs</a></li>
+            <li><a href="dsgvo.html">DSGVO</a></li>
+            <li><a href="impressum.html">Impressum</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr style="border-color: rgba(255,255,255,.12);" class="my-4"/>
+
+      <div class="d-flex flex-column flex-md-row justify-content-between" style="color: rgba(255,255,255,.65);">
+        <div>© <script>document.write(new Date().getFullYear());</script> afiya.ch</div>
+        <div>Moments that matter</div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top" aria-label="Back to top">↑</a>
+
+  <!-- JS (Bootstrap 4) -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+
+  <script>
+    // Back-to-top
+    const btt = document.querySelector('.back-to-top');
+    const toggle = () => btt.style.display = (window.scrollY > 320) ? 'inline-flex' : 'none';
+    window.addEventListener('scroll', toggle, { passive: true });
+    toggle();
+    btt.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Contact form demo
+    const form = document.getElementById('contactForm');
+    if(form){
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Danke! (Hinweis: Formular ist aktuell noch nicht mit einem Backend verbunden.)');
+        form.reset();
+      });
+    }
+  </script>
+</body>
+</html>
