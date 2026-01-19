@@ -456,6 +456,67 @@ footer{
   margin: 48px 0 56px;
 }
 
+    /* =========================================
+   Afiya – Soft Scroll Animations (classy)
+   ========================================= */
+
+.reveal{
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .75s ease, transform .75s ease;
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Varianten */
+.reveal--up{ transform: translateY(18px); }
+.reveal--down{ transform: translateY(-18px); }
+.reveal--left{ transform: translateX(18px); }
+.reveal--right{ transform: translateX(-18px); }
+
+.reveal--scale{
+  transform: scale(.98);
+}
+
+.reveal--blur{
+  filter: blur(8px);
+  transition: opacity .8s ease, transform .8s ease, filter .8s ease;
+}
+.reveal--blur.is-visible{
+  filter: blur(0);
+}
+
+/* Stagger (für Karten / Gallery) */
+.stagger > *{
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.stagger.is-visible > *{
+  opacity: 1;
+  transform: translateY(0);
+}
+.stagger.is-visible > *:nth-child(1){ transition-delay: 0ms; }
+.stagger.is-visible > *:nth-child(2){ transition-delay: 80ms; }
+.stagger.is-visible > *:nth-child(3){ transition-delay: 160ms; }
+.stagger.is-visible > *:nth-child(4){ transition-delay: 240ms; }
+.stagger.is-visible > *:nth-child(5){ transition-delay: 320ms; }
+.stagger.is-visible > *:nth-child(6){ transition-delay: 400ms; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .reveal, .stagger > *{
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    filter: none !important;
+  }
+}
+
   </style>
 </head>
 
