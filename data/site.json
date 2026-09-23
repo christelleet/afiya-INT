@@ -1,13 +1,13 @@
 {
   "hero": {
-    "kicker": "A SOCIAL CLUB FOR WOMEN",
-    "heading": "COME AS YOU ARE. LEAVE WITH MORE.",
-    "subtitle": "Real connections. New experiences. Memories worth keeping.",
+    "kicker": "Moments that matter",
+    "heading": "Ein Raum für Dich.",
+    "subtitle": "Afiya ist deine Community - ein Ort, an dem Begegnungen Tiefe bekommen, Frauen einander stärken und Entwicklung zu einem gemeinsamen Erlebnis wird.",
     "image": "images/afiya_hero.jpeg",
-    "location": "Zürich · Switzerland"
+    "location": "Region Zürich · Deutschschweiz"
   },
   "about": {
-    "kicker": "UNSERE VISION",
+    "kicker": "Unsere Vision",
     "heading": "Individuell wachsen. Gemeinsam erleben.",
     "vision_text": "Afiya hat die Mission, Frauen einen Raum zu bieten, in dem Begegnungen entstehen, Zugehörigkeit spürbar wird und gemeinsames Wachstum möglich ist. Hier entsteht ein Miteinander, das Vertrauen schenkt und Frauen verbindet.",
     "values": [
