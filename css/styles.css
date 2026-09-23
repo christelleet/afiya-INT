@@ -1468,3 +1468,87 @@ h1 em,h2 em,h3 em {
     transition:none
   }
 }
+/* =========================================================
+   EVENT DESCRIPTION
+   ========================================================= */
+
+.event-card__description {
+  max-width: 540px;
+
+  margin-top: 18px;
+
+  color: var(--color-muted);
+
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+
+/* Event status */
+
+.event-card__status {
+  position: absolute;
+
+  z-index: 3;
+
+  top: 22px;
+  left: 22px;
+
+  padding: 9px 13px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.92);
+
+  color: var(--color-black);
+
+  font-size: 9px;
+  font-weight: 600;
+
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+
+  backdrop-filter: blur(10px);
+}
+
+
+/* Event number */
+
+.event-card__number {
+  position: absolute;
+
+  z-index: 3;
+
+  right: 22px;
+  bottom: 20px;
+
+  color: #fff;
+
+  font-family: var(--font-serif);
+  font-size: 18px;
+}
+
+
+/* Past event metadata */
+
+.past-event__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  margin-bottom: 8px;
+
+  color: var(--color-muted);
+
+  font-size: 10px;
+  font-weight: 500;
+
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.past-event__dot {
+  opacity: 0.55;
+}
