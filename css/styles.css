@@ -1866,3 +1866,159 @@ h1 em,h2 em,h3 em {
   .reveal{opacity:1;transform:none;transition:none}
   .parallax-media img{transform:none!important}
 }
+
+
+/* =========================================================
+   AFIYA V2.1 — REAL INSTAGRAM REELS
+   ========================================================= */
+.social-section--embeds{
+  position:relative;
+  background:#f7f2ea;
+  overflow:hidden;
+}
+.social-section--embeds::before{
+  content:"SOCIAL";
+  position:absolute;
+  top:5%;
+  right:-2%;
+  font-family:var(--font-serif);
+  font-size:clamp(120px,22vw,340px);
+  line-height:.75;
+  letter-spacing:-.07em;
+  color:rgba(28,27,24,.025);
+  pointer-events:none;
+}
+.social-section__side{
+  max-width:350px;
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+  align-items:flex-start;
+  color:#71685f;
+  font-size:14px;
+}
+.reels-shell{
+  position:relative;
+  width:100%;
+  padding-inline:var(--page-padding);
+}
+.reels-track{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+  width:min(100%,1540px);
+  margin:0 auto;
+  align-items:start;
+}
+.reel-card{
+  min-width:0;
+  padding-top:13px;
+  border-top:1px solid rgba(28,27,24,.2);
+}
+.reel-card__top{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:0 3px 12px;
+  font-size:9px;
+  font-weight:600;
+  letter-spacing:.13em;
+  color:#766f67;
+}
+.reel-card__embed{
+  position:relative;
+  min-height:590px;
+  overflow:hidden;
+  border-radius:2px;
+  background:#fff;
+  box-shadow:0 14px 45px rgba(49,35,28,.07);
+}
+.reel-card .instagram-media{
+  margin:0 auto!important;
+  min-width:0!important;
+  width:100%!important;
+  max-width:540px!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+.reels-footer{
+  margin-top:65px;
+  padding-top:28px;
+  border-top:1px solid var(--color-line);
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  gap:50px;
+}
+.reels-footer>div{
+  display:flex;
+  gap:22px;
+  align-items:flex-start;
+}
+.reels-footer__line{
+  width:65px;
+  height:1px;
+  margin-top:15px;
+  background:var(--color-text);
+}
+.reels-footer p{
+  font-family:var(--font-serif);
+  font-size:clamp(28px,3vw,45px);
+  line-height:1.04;
+}
+
+/* Instagram injects an iframe after processing. Keep the official embed
+   responsive instead of forcing a fake fixed video crop. */
+.reel-card iframe{
+  max-width:100%!important;
+}
+
+@media(max-width:1250px){
+  .reels-track{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:38px 14px;
+    max-width:1040px;
+  }
+}
+
+@media(max-width:760px){
+  .social-section--embeds .social-section__heading{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:28px;
+  }
+  .reels-shell{
+    padding-inline:0;
+  }
+  .reels-track{
+    display:flex;
+    overflow-x:auto;
+    gap:12px;
+    padding:0 20px 14px;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;
+    overscroll-behavior-inline:contain;
+  }
+  .reels-track::-webkit-scrollbar{display:none}
+  .reel-card{
+    flex:0 0 min(88vw,390px);
+    scroll-snap-align:center;
+  }
+  .reel-card__embed{
+    min-height:580px;
+  }
+  .reels-footer{
+    flex-direction:column;
+    align-items:flex-start;
+  }
+  .reels-footer>div{
+    gap:13px;
+  }
+  .reels-footer__line{
+    width:32px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .reels-track{scroll-behavior:auto}
+}
