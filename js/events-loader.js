@@ -1,77 +1,513 @@
-// Lädt Events aus data/events.json und rendert sie in die vorbereiteten Container.
-// So können Events über das CMS (/admin) gepflegt werden, ohne index.html anzufassen.
+// ==========================================================
+// AFIYA — EVENTS LOADER
+// Lädt Events aus data/events.json.
+//
+// Bestehende CMS-Struktur bleibt erhalten:
+// {
+//   "upcoming": [...],
+//   "past": [...]
+// }
+//
+// Upcoming Events  -> #tickets
+// Past Events      -> #pastEventsTrack
+// ==========================================================
+
 (function () {
-  function escapeHtml(str) {
-    const div = document.createElement('div');
-    div.textContent = str == null ? '' : String(str);
+  "use strict";
+
+
+  /* ========================================================
+     HELPERS
+  ======================================================== */
+
+  function escapeHtml(value) {
+    const div = document.createElement("div");
+
+    div.textContent =
+      value == null
+        ? ""
+        : String(value);
+
     return div.innerHTML;
   }
 
-  function renderUpcoming(events) {
-    const container = document.getElementById('tickets');
-    if (!container) return;
 
-    const sorted = events.slice().sort((a, b) => (a.order || 0) - (b.order || 0));
+  function safeUrl(value) {
+    if (!value) {
+      return "#";
+    }
 
-    container.innerHTML = sorted.map(function (ev) {
-      const soonBadge = ev.coming_soon
-        ? '<div class="soon-badge"><i class="ri-time-line"></i> Coming soon</div>'
-        : '';
-      const button = ev.coming_soon
-        ? '<a class="btn btn-outline-primary btn-block" href="' + escapeHtml(ev.ticket_url) + '" target="_blank" rel="noopener"><i class="ri-instagram-line"></i> News auf Instagram</a>'
-        : '<a class="btn btn-primary btn-block" href="' + escapeHtml(ev.ticket_url) + '" target="_blank" rel="noopener">Ticket kaufen</a>';
-
-      return (
-        '<div class="col-md-4 mb-4">' +
-          '<div class="card-soft hoverable">' +
-            soonBadge +
-            '<div class="event-media mb-3"><img src="' + escapeHtml(ev.image) + '" alt="' + escapeHtml(ev.title) + '"></div>' +
-            '<div class="d-flex justify-content-between align-items-center">' +
-              '<span class="badge-soft"><i class="ri-calendar-event-line"></i>' + escapeHtml(ev.date) + '</span>' +
-              '<span class="badge-soft"><i class="ri-map-pin-2-line"></i>' + escapeHtml(ev.location) + '</span>' +
-            '</div>' +
-            '<h3 class="mt-3">' + escapeHtml(ev.title) + '</h3>' +
-            '<p class="lead-soft" style="font-size:16px;">' + escapeHtml(ev.description) + '</p>' +
-            button +
-          '</div>' +
-        '</div>'
-      );
-    }).join('');
+    return escapeHtml(value);
   }
+
+
+  function eventNumber(index) {
+    return String(index + 1).padStart(2, "0");
+  }
+
+
+  /* ========================================================
+     UPCOMING EVENTS
+  ======================================================== */
+
+  function renderUpcoming(events) {
+
+    const container =
+      document.getElementById("tickets");
+
+    const emptyState =
+      document.getElementById("eventsEmpty");
+
+
+    if (!container) {
+      return;
+    }
+
+
+    /*
+     * CMS order weiterhin respektieren.
+     */
+
+    const sorted = events
+      .slice()
+      .sort(function (a, b) {
+
+        return (
+          (a.order || 0) -
+          (b.order || 0)
+        );
+
+      });
+
+
+    /*
+     * Keine Events vorhanden
+     */
+
+    if (!sorted.length) {
+
+      container.innerHTML = "";
+
+      if (emptyState) {
+        emptyState.hidden = false;
+      }
+
+      return;
+    }
+
+
+    if (emptyState) {
+      emptyState.hidden = true;
+    }
+
+
+    /*
+     * Event Cards erstellen
+     */
+
+    container.innerHTML =
+      sorted
+        .map(function (ev, index) {
+
+          const title =
+            escapeHtml(ev.title);
+
+          const date =
+            escapeHtml(ev.date);
+
+          const location =
+            escapeHtml(ev.location);
+
+          const description =
+            escapeHtml(ev.description);
+
+          const image =
+            safeUrl(ev.image);
+
+          const ticketUrl =
+            safeUrl(ev.ticket_url);
+
+
+          /*
+           * Erstes Event etwas prominenter darstellen,
+           * wenn mehrere Events vorhanden sind.
+           */
+
+          const featuredClass =
+            index === 0 && sorted.length > 1
+              ? " event-card--featured"
+              : "";
+
+
+          /*
+           * Coming soon
+           */
+
+          const comingSoon =
+            Boolean(ev.coming_soon);
+
+
+          const statusLabel =
+            comingSoon
+              ? "COMING SOON"
+              : "UPCOMING";
+
+
+          const actionLabel =
+            comingSoon
+              ? "Follow for updates"
+              : "Get tickets";
+
+
+          const actionIcon =
+            comingSoon
+              ? "ri-instagram-line"
+              : "ri-arrow-right-up-line";
+
+
+          return (
+            '<article class="event-card' +
+            featuredClass +
+            ' reveal">' +
+
+              /*
+               * IMAGE
+               */
+
+              '<a ' +
+                'class="event-card__image" ' +
+                'href="' + ticketUrl + '" ' +
+                'target="_blank" ' +
+                'rel="noopener noreferrer" ' +
+                'aria-label="' + title + '">' +
+
+                '<img ' +
+                  'src="' + image + '" ' +
+                  'alt="' + title + '" ' +
+                  'loading="lazy">' +
+
+                '<div class="event-card__overlay"></div>' +
+
+
+                /*
+                 * STATUS
+                 */
+
+                '<span class="event-card__status">' +
+                  statusLabel +
+                '</span>' +
+
+
+                /*
+                 * NUMBER
+                 */
+
+                '<span class="event-card__number">' +
+                  eventNumber(index) +
+                '</span>' +
+
+              '</a>' +
+
+
+              /*
+               * CONTENT
+               */
+
+              '<div class="event-card__content">' +
+
+                '<div class="event-card__meta">' +
+
+                  '<span>' +
+                    '<i class="ri-calendar-line"></i>' +
+                    date +
+                  '</span>' +
+
+                  '<span>' +
+                    '<i class="ri-map-pin-line"></i>' +
+                    location +
+                  '</span>' +
+
+                '</div>' +
+
+
+                '<h3 class="event-card__title">' +
+                  title +
+                '</h3>' +
+
+
+                (
+                  description
+                    ? '<p class="event-card__description">' +
+                        description +
+                      '</p>'
+                    : ""
+                ) +
+
+
+                '<div class="event-card__footer">' +
+
+                  '<span class="event-card__location">' +
+                    location +
+                  '</span>' +
+
+
+                  '<a ' +
+                    'class="event-card__arrow" ' +
+                    'href="' + ticketUrl + '" ' +
+                    'target="_blank" ' +
+                    'rel="noopener noreferrer">' +
+
+                    '<span>' +
+                      actionLabel +
+                    '</span>' +
+
+                    '<i class="' +
+                      actionIcon +
+                    '"></i>' +
+
+                  '</a>' +
+
+                '</div>' +
+
+              '</div>' +
+
+            '</article>'
+          );
+
+        })
+        .join("");
+
+
+    /*
+     * Dynamisch erzeugte Reveal-Elemente sichtbar machen.
+     *
+     * Der IntersectionObserver im index.html wurde bereits
+     * ausgeführt, bevor die Events geladen wurden.
+     */
+
+    requestAnimationFrame(function () {
+
+      container
+        .querySelectorAll(".reveal")
+        .forEach(function (element) {
+
+          element.classList.add("is-visible");
+
+        });
+
+    });
+
+  }
+
+
+  /* ========================================================
+     PAST EVENTS
+  ======================================================== */
 
   function renderPast(events) {
-    const inner = document.querySelector('#pastCarousel .carousel-inner');
-    const indicators = document.querySelector('#pastCarousel .carousel-indicators');
-    if (!inner || !indicators) return;
 
-    const sorted = events.slice().sort((a, b) => (a.order || 0) - (b.order || 0));
+    const container =
+      document.getElementById("pastEventsTrack");
 
-    inner.innerHTML = sorted.map(function (ev, i) {
-      return (
-        '<div class="carousel-item' + (i === 0 ? ' active' : '') + '">' +
-          '<img src="' + escapeHtml(ev.image) + '" alt="' + escapeHtml(ev.title) + '">' +
-          '<div class="carousel-caption"><div class="cap"><i class="ri-sparkling-2-line"></i>' + escapeHtml(ev.title) + '</div></div>' +
-        '</div>'
-      );
-    }).join('');
 
-    indicators.innerHTML = sorted.map(function (ev, i) {
-      return '<li data-target="#pastCarousel" data-slide-to="' + i + '"' + (i === 0 ? ' class="active"' : '') + '></li>';
-    }).join('');
-
-    if (window.jQuery) {
-      window.jQuery('#pastCarousel').carousel('dispose');
-      window.jQuery('#pastCarousel').carousel({ interval: 7000, touch: true });
+    if (!container) {
+      return;
     }
+
+
+    const sorted = events
+      .slice()
+      .sort(function (a, b) {
+
+        return (
+          (a.order || 0) -
+          (b.order || 0)
+        );
+
+      });
+
+
+    if (!sorted.length) {
+
+      container.innerHTML = "";
+
+      return;
+
+    }
+
+
+    container.innerHTML =
+      sorted
+        .map(function (ev, index) {
+
+          const title =
+            escapeHtml(ev.title);
+
+          const image =
+            safeUrl(ev.image);
+
+          const date =
+            escapeHtml(ev.date);
+
+          const location =
+            escapeHtml(ev.location);
+
+
+          return (
+            '<article class="past-event reveal">' +
+
+              '<div class="past-event__image">' +
+
+                '<img ' +
+                  'src="' + image + '" ' +
+                  'alt="' + title + '" ' +
+                  'loading="lazy">' +
+
+                '<span class="past-event__number">' +
+                  eventNumber(index) +
+                '</span>' +
+
+              '</div>' +
+
+
+              '<div class="past-event__content">' +
+
+                '<div>' +
+
+                  '<p class="past-event__meta">' +
+
+                    (
+                      date
+                        ? '<span>' +
+                            date +
+                          '</span>'
+                        : ""
+                    ) +
+
+                    (
+                      date && location
+                        ? '<span class="past-event__dot">·</span>'
+                        : ""
+                    ) +
+
+                    (
+                      location
+                        ? '<span>' +
+                            location +
+                          '</span>'
+                        : ""
+                    ) +
+
+                  '</p>' +
+
+
+                  '<h3>' +
+                    title +
+                  '</h3>' +
+
+                '</div>' +
+
+
+                '<i class="ri-arrow-right-up-line"></i>' +
+
+              '</div>' +
+
+            '</article>'
+          );
+
+        })
+        .join("");
+
+
+    /*
+     * Dynamisch erzeugte Elemente sichtbar machen
+     */
+
+    requestAnimationFrame(function () {
+
+      container
+        .querySelectorAll(".reveal")
+        .forEach(function (element) {
+
+          element.classList.add("is-visible");
+
+        });
+
+    });
+
   }
 
-  fetch('data/events.json')
-    .then(function (res) { return res.json(); })
-    .then(function (data) {
-      if (data.upcoming) renderUpcoming(data.upcoming);
-      if (data.past) renderPast(data.past);
+
+  /* ========================================================
+     LOAD EVENTS.JSON
+  ======================================================== */
+
+  fetch("data/events.json", {
+    cache: "no-store"
+  })
+
+    .then(function (response) {
+
+      if (!response.ok) {
+
+        throw new Error(
+          "HTTP " + response.status
+        );
+
+      }
+
+      return response.json();
+
     })
-    .catch(function (err) {
-      console.error('Events konnten nicht geladen werden:', err);
+
+
+    .then(function (data) {
+
+      /*
+       * Bestehende JSON-Struktur:
+       *
+       * {
+       *   upcoming: [],
+       *   past: []
+       * }
+       */
+
+      renderUpcoming(
+        Array.isArray(data.upcoming)
+          ? data.upcoming
+          : []
+      );
+
+
+      renderPast(
+        Array.isArray(data.past)
+          ? data.past
+          : []
+      );
+
+    })
+
+
+    .catch(function (error) {
+
+      console.error(
+        "Afiya Events konnten nicht geladen werden:",
+        error
+      );
+
+
+      /*
+       * Upcoming Empty State anzeigen,
+       * falls JSON nicht geladen werden konnte.
+       */
+
+      const emptyState =
+        document.getElementById("eventsEmpty");
+
+      if (emptyState) {
+        emptyState.hidden = false;
+      }
+
     });
+
 })();

@@ -1,68 +1,72 @@
-// Lädt Hero-/Über-uns-Texte und Social-Media-Links aus data/site.json und
-// befüllt die vorbereiteten Elemente. So können diese Inhalte über das CMS
-// (/admin) gepflegt werden, ohne index.html anzufassen.
+// AFIYA — SITE LOADER
 (function () {
-  function escapeHtml(str) {
-    const div = document.createElement('div');
-    div.textContent = str == null ? '' : String(str);
-    return div.innerHTML;
-  }
+  "use strict";
 
-  function setText(id, value) {
+  const esc = (value) => {
+    const div = document.createElement("div");
+    div.textContent = value == null ? "" : String(value);
+    return div.innerHTML;
+  };
+
+  const setText = (id, value) => {
     const el = document.getElementById(id);
     if (el && value != null) el.textContent = value;
-  }
+  };
 
-  function applyHero(hero) {
-    if (!hero) return;
-    setText('hero-kicker', hero.kicker);
-    setText('hero-heading', hero.heading);
-    setText('hero-subtitle', hero.subtitle);
-    setText('hero-location-text', hero.location);
-    const image = document.getElementById('hero-image');
-    if (image && hero.image) image.src = hero.image;
-  }
-
-  function applyAbout(about) {
-    if (!about) return;
-    setText('about-kicker', about.kicker);
-    setText('about-heading', about.heading);
-    setText('about-vision-text', about.vision_text);
-
-    const container = document.getElementById('about-values');
-    if (container && Array.isArray(about.values)) {
-      container.innerHTML = about.values.map(function (v) {
-        return (
-          '<div class="col-md-6 mb-4">' +
-            '<div class="card-soft hoverable">' +
-              '<span class="badge-soft"><i class="' + escapeHtml(v.icon) + '"></i> ' + escapeHtml(v.badge) + '</span>' +
-              '<h3 class="mt-3">' + escapeHtml(v.title) + '</h3>' +
-              '<p class="lead-soft" style="font-size:16px;">' + escapeHtml(v.description) + '</p>' +
-            '</div>' +
-          '</div>'
-        );
-      }).join('');
-    }
-  }
-
-  function applySocial(social) {
-    if (!social) return;
-    ['instagram', 'tiktok', 'whatsapp'].forEach(function (key) {
-      if (!social[key]) return;
-      document.querySelectorAll('[data-social="' + key + '"]').forEach(function (a) {
-        a.href = social[key];
-      });
+  const setSocial = (name, value) => {
+    if (!value) return;
+    document.querySelectorAll(`[data-social="${name}"]`).forEach((link) => {
+      link.href = value;
     });
-  }
+  };
 
-  fetch('data/site.json')
-    .then(function (res) { return res.json(); })
-    .then(function (data) {
-      applyHero(data.hero);
-      applyAbout(data.about);
-      applySocial(data.social);
+  fetch("data/site.json", { cache: "no-store" })
+    .then((response) => {
+      if (!response.ok) throw new Error("HTTP " + response.status);
+      return response.json();
     })
-    .catch(function (err) {
-      console.error('Seiteninhalte konnten nicht geladen werden:', err);
-    });
+    .then((data) => {
+      const hero = data.hero || {};
+      const about = data.about || {};
+      const social = data.social || {};
+
+      setText("hero-kicker", hero.kicker);
+      setText("hero-heading", hero.heading);
+      setText("hero-subtitle", hero.subtitle);
+      setText("hero-location-text", hero.location);
+
+      if (hero.image) {
+        const image = document.getElementById("hero-image");
+        if (image) image.src = hero.image;
+      }
+
+      setText("about-kicker", about.kicker);
+      setText("about-heading", about.heading);
+      setText("about-vision-text", about.vision_text);
+
+      const values = document.getElementById("about-values");
+      if (values && Array.isArray(about.values)) {
+        values.innerHTML = about.values.map((item, index) => `
+          <article class="value-item reveal">
+            <span class="value-item__number">${String(index + 1).padStart(2, "0")}</span>
+            <div class="value-item__badge">
+              ${item.icon ? `<i class="${esc(item.icon)}"></i>` : ""}
+              <span>${esc(item.badge)}</span>
+            </div>
+            <h3>${esc(item.title)}</h3>
+            <p>${esc(item.description)}</p>
+          </article>
+        `).join("");
+      }
+
+      setSocial("instagram", social.instagram);
+      setSocial("tiktok", social.tiktok);
+      setSocial("whatsapp", social.whatsapp);
+
+      requestAnimationFrame(() => {
+        if (window.AfiyaObserve) window.AfiyaObserve();
+        else document.querySelectorAll(".reveal").forEach((el) => el.classList.add("is-visible"));
+      });
+    })
+    .catch((error) => console.error("Afiya Site Content konnte nicht geladen werden:", error));
 })();
