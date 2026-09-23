@@ -1,0 +1,304 @@
+<!-- /*
+* Template Name: Active
+* Template Author: Untree.co
+* Tempalte URI: https://untree.co/
+* License: https://creativecommons.org/licenses/by/3.0/
+*/ -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Untree.co">
+  <link rel="shortcut icon" href="favicon.png">
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <title>Afiya | Kontakt</title>
+</head>
+<body>
+
+
+  <div class="site-mobile-menu site-navbar-target">
+    <div class="site-mobile-menu-header">
+      <div class="site-mobile-menu-close">
+        <span class="icofont-close js-menu-toggle"></span>
+      </div>
+    </div>
+    <div class="site-mobile-menu-body"></div>
+  </div>
+
+  <div class="container">
+
+
+    <nav class="site-nav">
+      <div class="row align-items-center">
+
+        <div class="col-6 col-sm-6 col-lg-3">
+          <h1><a href="index.html">Afiya<span class="text-primary">.</span> </h1>
+          </div>
+
+          <div class="col-6 col-sm-6 col-lg-9 site-navigation text-right">
+            <ul class="js-clone-nav d-none d-lg-inline-block text-left site-menu">
+              <li><a href="index.html">Startseite</a></li>              
+              <li><a href="index.html#about">Über Afiya</a></li>
+              <li><a href="index.html#angebote">Angebote</a></li>
+              <li><a href="index.html#faq">FAQ</a></li>
+              <li class="active"><a href="contact.html">Kontakt</a></li>
+              <li class="cta-button"><a href="https://chat.whatsapp.com/LEN0tI0IkzkL6HXBFnaaAi?mode=ems_wa_c" target="_blank">WhatsApp-Gruppe</a></li>
+            </ul>
+
+            <a href="#" class="burger ml-auto site-menu-toggle js-menu-toggle d-block d-lg-none" data-toggle="collapse" data-target="#main-navbar">
+              <span></span>
+            </a>
+
+          </div>
+
+        </div>  
+      </nav> <!-- END nav -->
+
+    </div> <!-- END container -->
+
+
+    
+
+    <div class="site-hero pb-5">
+
+      <div class="container">
+        <div class="row align-items-center justify-content-between">
+          <div class="col-lg-12">
+            <h1 class="text-black">Kontakt</h1>
+            <nav aria-label="breadcrumb">
+              <ol class="custom-breadcrumb breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Startseite</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Kontaktiere uns</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-grey">
+      <div class="container">
+
+              <!-- Kontakt Sektion -->
+<div class="site-section bg-light" id="kontakt">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-7 text-center">
+        <h2 class="section-title">Hast du Fragen oder Ideen?</h2>
+        <p>Wir freuen uns, von dir zu hören. Schreib uns direkt über das Kontaktformular und wir melden uns bei dir.</p>
+      </div>
+    </div>
+
+<form id="afiyaForm" action="https://api.web3forms.com/submit" method="POST">
+  <input type="hidden" name="access_key" value="3061f777-b99b-4e0b-992e-2460179dabd8">
+
+  <div class="row">
+    <div class="col-6">
+      <div class="form-group">
+        <label class="text-black" for="fname">Vorname</label>
+        <input type="text" class="form-control" id="fname" name="Vorname" required>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="form-group">
+        <label class="text-black" for="lname">Nachname</label>
+        <input type="text" class="form-control" id="lname" name="Nachname" required>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="text-black" for="email">E-Mail Adresse</label>
+    <input type="email" class="form-control" id="email" name="email" required>
+  </div>
+
+  <div class="form-group">
+    <label class="text-black" for="message">Nachricht</label>
+    <textarea class="form-control" id="message" name="Nachricht" rows="5" required></textarea>
+  </div>
+
+  <!-- SPAM-Schutz -->
+  <input type="checkbox" name="botcheck" style="display: none;">
+
+  <button type="submit" class="btn btn-primary-hover-outline">Nachricht senden</button>
+
+  <!-- Erfolgsmeldung -->
+  <div id="form-message" style="display: none; margin-top: 1rem; color: green;">
+    Vielen Dank für deine Nachricht! Wir melden uns bald bei dir.
+  </div>
+</form>
+
+<script>
+  const form = document.getElementById("afiyaForm");
+  const formMessage = document.getElementById("form-message");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+
+    if (response.ok) {
+      form.reset();
+      formMessage.style.display = "block";
+    } else {
+      formMessage.style.display = "block";
+      formMessage.style.color = "red";
+      formMessage.innerText = "Ups! Etwas ist schiefgelaufen.";
+    }
+  });
+</script>
+
+            </div>
+
+
+
+          </div>
+
+
+        </div>
+
+        <div style="width: 100%;">
+  <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2761.963235073786!2d8.541694315620833!3d47.37688677917027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47900a09b7e9e6b3%3A0xe12f4e7580143ed4!2sZ%C3%BCrich!5e0!3m2!1sde!2sch!4v1694092368256!5m2!1sde!2sch" 
+    width="100%" 
+    height="500" 
+    style="border:0;" 
+    allowfullscreen="" 
+    loading="lazy" 
+    referrerpolicy="no-referrer-when-downgrade">
+  </iframe>
+</div>
+
+
+      </div>
+
+
+    </div>
+  </div>
+
+
+
+
+  <div class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-lg-3">
+          <div class="widget">
+            <h3 class="widget-heading">Über Afiya</h3>
+            <p>Afiya ist eine Community, die Frauen zusammenbringt. Hier entstehen Verbindungen, die bleiben – getragen von Offenheit, Inspiration und dem Wunsch, gemeinsam mehr zu erleben.</p>
+            <p class="mb-4"><a href="index.html#about" class="btn btn-primary btn-primary-hover-outline">Mehr erfahren</a></p>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 pl-lg-5">
+          <div class="widget">
+            <h3 class="widget-heading">Navigation</h3>
+            <ul class="list-unstyled float-left mr-5">
+              <li><a href="index.html">Startseite</a></li>
+              <li><a href="index.html#about">Über Afiya</a></li>
+              <li><a href="index.html#angebote">Angebote</a></li>
+
+
+            </ul>
+            <ul class="list-unstyled float-left">
+              <li><a href="#">AGBs</a></li>
+              <li><a href="#">DSGVO</a></li>
+              <li><a href="#">Impressum</a></li>
+
+
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 pl-lg-5">
+          <div class="widget">
+            <h3 class="widget-heading"></h3>
+            <ul class="list-unstyled footer-blog-entry">
+              <li>
+                <span class="d-block date"></span>
+                <a href="#"></a>
+              </li>
+              <li>
+                <span class="d-block date"></span>
+                <a href="#"></a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6 col-lg-3 pl-lg-5">
+          <div class="widget">
+            <h3 class="widget-heading">Vernetzen</h3>
+            <ul class="list-unstyled social-icons light mb-0">
+              <li><a href="#"><span class="icon-instagram"></span></a></li>
+            </ul>
+          </div>
+
+          <div class="widget">
+            <div class="footer-subscribe">
+              <h3 class="widget-heading">Abonnieren</h3>
+              <form action="#">
+                <input type="text" class="form-control" placeholder="E-Mail Adresse">
+                <button type="submit" class="btn btn-link">
+                  <span class="icon-keyboard_backspace"></span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row copyright">
+        <div class="col-lg-9 ">
+          <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script>. Alle Rechte vorbehalten. &mdash; Designed by <a href="https://untree.co">Untree.co</a> <!-- License information: https://untree.co/license/ -->
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+  <div id="overlayer"></div>
+  <div class="loader">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/imagesloaded.pkgd.js"></script>
+  <script src="js/isotope.pkgd.min.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.fancybox.min.js"></script>
+  <script src="js/custom.js"></script>
+  
+</body>
+</html>

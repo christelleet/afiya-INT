@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Danke für deine Nachricht – Afiya Community">
+  <title>Danke – Afiya</title>
+  <link rel="icon" href="images/favicon.ico">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #006B7A;
+      --primary-900: #004E59;
+      --mint: #D6F2F1;
+      --bg: #FBFBFA;
+      --text: #0B0B0F;
+      --shadow-lg: 0 24px 80px rgba(11,11,15,.14);
+      --shadow-md: 0 14px 40px rgba(11,11,15,.10);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      background: 
+        radial-gradient(900px 520px at 50% 20%, rgba(0,107,122,.12), transparent 60%),
+        radial-gradient(700px 420px at 80% 80%, rgba(214,242,241,.70), transparent 55%),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    .success-container {
+      max-width: 580px;
+      width: 100%;
+      background: rgba(255,255,255,.95);
+      border-radius: 26px;
+      border: 1px solid rgba(11,11,15,.06);
+      box-shadow: var(--shadow-lg);
+      padding: 3.5rem 2.5rem;
+      text-align: center;
+      animation: slideUp 0.6s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .icon-wrapper {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 1.5rem;
+      background: linear-gradient(135deg, var(--mint), rgba(0,107,122,.15));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(0,107,122,.20);
+      animation: scaleIn 0.5s ease-out 0.2s backwards;
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .icon-wrapper i {
+      font-size: 42px;
+      color: var(--primary);
+    }
+
+    h1 {
+      font-family: Sora, Inter, sans-serif;
+      font-size: clamp(28px, 4vw, 36px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+      color: var(--text);
+      animation: fadeIn 0.6s ease-out 0.3s backwards;
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.7;
+      color: rgba(11,11,15,.70);
+      margin-bottom: 2rem;
+      animation: fadeIn 0.6s ease-out 0.4s backwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      animation: fadeIn 0.6s ease-out 0.5s backwards;
+    }
+
+    @media (min-width: 480px) {
+      .btn-group {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: 999px;
+      font-weight: 650;
+      font-size: 15.5px;
+      text-decoration: none;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-900);
+      transform: translateY(-2px);
+      box-shadow: 0 18px 48px rgba(0,107,122,.25);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 1px solid rgba(0,107,122,.28);
+    }
+
+    .btn-outline:hover {
+      background: rgba(0,107,122,.08);
+      border-color: rgba(0,107,122,.40);
+      transform: translateY(-1px);
+    }
+
+    .social-links {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(11,11,15,.08);
+      animation: fadeIn 0.6s ease-out 0.6s backwards;
+    }
+
+    .social-text {
+      font-size: 14px;
+      color: rgba(11,11,15,.60);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .social-icons a {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,107,122,.08);
+      border: 1px solid rgba(0,107,122,.16);
+      color: var(--primary);
+      text-decoration: none;
+      transition: all .18s ease;
+    }
+
+    .social-icons a:hover {
+      background: var(--primary);
+      color: #fff;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,107,122,.20);
+    }
+
+    .social-icons i {
+      font-size: 20px;
+    }
+
+    /* Responsive */
+    @media (max-width: 575.98px) {
+      .success-container {
+        padding: 2.5rem 1.5rem;
+      }
+      .icon-wrapper {
+        width: 75px;
+        height: 75px;
+      }
+      .icon-wrapper i {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="success-container">
+    <div class="icon-wrapper">
+      <i class="ri-check-line"></i>
+    </div>
+
+    <h1>Nachricht erhalten! 💌</h1>
+    <p>
+      Vielen Dank für deine Nachricht! Wir haben sie erhalten und melden uns so schnell wie möglich bei dir zurück.
+    </p>
+
+    <div class="btn-group">
+      <a href="index.html" class="btn btn-primary">
+        <i class="ri-home-4-line"></i> Zurück zur Startseite
+      </a>
+      <a href="index.html#upcoming" class="btn btn-outline">
+        <i class="ri-calendar-event-line"></i> Kommende Events
+      </a>
+    </div>
+
+    <div class="social-links">
+      <p class="social-text">Folge uns für Updates & Insights</p>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/afiyazurich" target="_blank" rel="noopener" aria-label="Instagram">
+          <i class="ri-instagram-line"></i>
+        </a>
+        <a href="https://www.tiktok.com/@afiyazurich" target="_blank" rel="noopener" aria-label="TikTok">
+          <i class="ri-tiktok-line"></i>
+        </a>
+        <a href="https://chat.whatsapp.com/LEN0tI0IkzkL6HXBFnaaAi?mode=ems_wa_c" target="_blank" rel="noopener" aria-label="WhatsApp Community">
+          <i class="ri-whatsapp-line"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

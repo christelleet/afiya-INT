@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="de-CH">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="Datenschutz / DSGVO – Afiya (Community Events für Frauen in der Deutschschweiz)" />
+  <title>Afiya – Datenschutz / DSGVO</title>
+
+  <!-- Fonts (wie bei deiner Live-Version) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Bootstrap 4.6 (CDN) -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+    crossorigin="anonymous"
+  />
+
+  <style>
+    :root{
+      --primary:#006B7A;
+      --primary-900:#004E59;
+      --mint:#D6F2F1;
+      --bg:#FBFBFA;
+      --text:#0B0B0F;
+      --muted: rgba(11,11,15,.68);
+
+      --radius-xl: 26px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+
+      --shadow-sm: 0 8px 20px rgba(11,11,15,.06);
+      --shadow-md: 0 14px 40px rgba(11,11,15,.10);
+      --shadow-lg: 0 24px 80px rgba(11,11,15,.14);
+
+      --border: 1px solid rgba(11,11,15,.08);
+      --focus: 0 0 0 3px rgba(0,107,122,.22);
+    }
+
+    html{ scroll-behavior:smooth; }
+    body{
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    h1,h2,h3,h4,h5{
+      font-family: Sora, Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+      letter-spacing: -0.03em;
+    }
+
+    .kicker{
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 12px;
+    }
+    .section-title{
+      font-weight: 800;
+      line-height: 1.08;
+    }
+    .lead-soft{
+      color: rgba(11,11,15,.74);
+      line-height: 1.75;
+      font-size: 16.5px;
+    }
+
+    /* Navbar (glass) */
+    .nav-glass{
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(251,251,250,.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(11,11,15,.08);
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      text-decoration:none !important;
+    }
+    .brand-mark{
+      width: 34px; height: 34px;
+      border-radius: 999px;
+      background:
+        radial-gradient(18px 18px at 65% 40%, rgba(255,255,255,.98) 0 70%, transparent 72%),
+        radial-gradient(30px 30px at 42% 52%, rgba(255,255,255,.98) 0 68%, transparent 70%),
+        linear-gradient(180deg, var(--primary), var(--primary-900));
+      box-shadow: var(--shadow-sm);
+    }
+    .brand-name{
+      font-family: Sora, Inter, sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      font-size: 22px;
+      color: var(--text);
+    }
+    .brand-name span{ color: var(--primary); }
+
+    .navbar-light .navbar-nav .nav-link{
+      color: rgba(11,11,15,.82);
+      font-weight: 700;
+    }
+    .navbar-light .navbar-nav .nav-link:hover{
+      color: var(--primary);
+    }
+
+    /* Buttons */
+    .btn{
+      border-radius: 999px !important;
+      padding: 12px 18px !important;
+      font-weight: 800;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+    }
+    .btn:focus{ outline:none !important; box-shadow: var(--focus) !important; }
+    .btn:hover{ transform: translateY(-1px); box-shadow: var(--shadow-md); }
+
+    .btn-primary{
+      background: var(--primary) !important;
+      border-color: var(--primary) !important;
+    }
+    .btn-primary:hover{
+      background: var(--primary-900) !important;
+      border-color: var(--primary-900) !important;
+    }
+    .btn-outline-primary{
+      border-color: rgba(0,107,122,.28) !important;
+      color: var(--primary) !important;
+      background: transparent !important;
+    }
+    .btn-outline-primary:hover{
+      background: var(--primary) !important;
+      color: #fff !important;
+      border-color: var(--primary) !important;
+    }
+
+    /* Hero-like header for legal pages */
+    .legal-hero{
+      padding: 56px 0 28px;
+      background:
+        radial-gradient(900px 520px at 10% 20%, rgba(0,107,122,.14), transparent 60%),
+        radial-gradient(700px 420px at 90% 0%, rgba(214,242,241,.60), transparent 55%),
+        var(--bg);
+    }
+
+    .section{ padding: 40px 0 80px; }
+    @media (max-width: 767.98px){ .section{ padding: 28px 0 64px; } }
+
+    /* Content card */
+    .card-soft{
+      border-radius: var(--radius-lg);
+      border: var(--border);
+      background: rgba(255,255,255,.92);
+      box-shadow: var(--shadow-sm);
+      padding: 26px;
+    }
+    @media (max-width: 575.98px){
+      .card-soft{ padding: 18px; }
+    }
+
+    /* Legal typography */
+    .legal h2{
+      font-size: 20px;
+      margin-top: 26px;
+      font-weight: 800;
+    }
+    .legal h3{
+      font-size: 17px;
+      margin-top: 18px;
+      font-weight: 800;
+    }
+    .legal p, .legal li{
+      font-size: 15.5px;
+      line-height: 1.85;
+      color: rgba(11,11,15,.78);
+    }
+    .legal ul{ padding-left: 1.1rem; }
+
+    .legal .note,
+    .legal blockquote{
+      border-left: 4px solid rgba(0,107,122,.35);
+      background: rgba(0,107,122,.06);
+      padding: 14px 14px;
+      border-radius: 12px;
+      color: rgba(11,11,15,.78);
+      font-size: 14px;
+      line-height: 1.7;
+      margin: 14px 0;
+    }
+
+    .legal .mini{
+      font-size: 14px;
+      color: rgba(11,11,15,.64);
+      line-height: 1.7;
+    }
+
+    .table-plain,
+    .legal table{
+      width:100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    .table-plain th, .table-plain td,
+    .legal table th, .legal table td{
+      border-bottom: 1px solid rgba(11,11,15,.08);
+      padding: 12px 10px;
+      vertical-align: top;
+      font-size: 14.5px;
+      color: rgba(11,11,15,.78);
+      text-align: left;
+    }
+    .table-plain th,
+    .legal table th{
+      font-weight: 800;
+      color: rgba(11,11,15,.86);
+    }
+
+    /* Footer */
+    footer{
+      background: linear-gradient(180deg, var(--primary-900), #043b43);
+      color: rgba(255,255,255,.82);
+      padding: 56px 0;
+    }
+    footer h5{
+      color:#fff;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    footer a{
+      color: rgba(255,255,255,.85);
+      text-decoration:none;
+    }
+    footer a:hover{ color: #fff; text-decoration: underline; }
+
+    /* Back to top */
+    .back-to-top{
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(11,11,15,.92);
+      color:#fff;
+      box-shadow: var(--shadow-md);
+      z-index: 9999;
+      text-decoration:none !important;
+    }
+  </style>
+</head>
+
+<body data-legal-page="dsgvo">
+
+  <!-- NAV -->
+  <div class="nav-glass">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light px-0">
+        <a class="brand" href="index.html" aria-label="Afiya Home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name">Afiya<span>.</span></span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMain"
+                aria-controls="navMain" aria-expanded="false" aria-label="Navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navMain">
+          <ul class="navbar-nav ml-auto align-items-lg-center">
+            <li class="nav-item"><a class="nav-link" href="index.html#upcoming">Kommende Events</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#past">Vergangene Events</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#about">Über uns</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html#contact">Kontakt</a></li>
+            <li class="nav-item ml-lg-3 mt-2 mt-lg-0">
+              <a class="btn btn-primary" href="index.html#tickets"><i class="ri-ticket-2-line"></i> Tickets</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="legal-hero">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-9 text-center">
+          <div class="kicker">Rechtliches</div>
+          <h1 class="section-title mt-2" id="legal-title">Datenschutz / DSGVO</h1>
+          <p class="lead-soft mt-3 mb-0" id="legal-subtitle">
+            Datenschutzerklärung für Afiya (Website &amp; Eventbuchung).
+          </p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENT -->
+  <section class="section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-9">
+          <div class="card-soft legal">
+            <div id="legal-body">
+              <!-- Wird per JS aus data/legal.json (Markdown) gerendert, siehe js/legal-loader.js -->
+            </div>
+
+
+            <hr style="border-color: rgba(11,11,15,.08);" class="my-4">
+
+            <p style="color: rgba(11,11,15,.62); font-size: 14px; margin-bottom:0;">
+              <strong>Stand:</strong> <script>document.write(new Date().toLocaleDateString('de-CH'))</script>
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <h5>Afiya</h5>
+          <p style="color: rgba(255,255,255,.76); line-height:1.7;">
+            Afiya ist eine Community, die Frauen zusammenbringt – für Momente, die im Alltag oft fehlen.
+          </p>
+          <a class="btn btn-outline-primary"
+             style="border-color: rgba(255,255,255,.35) !important; color:#fff !important;"
+             href="https://chat.whatsapp.com/LEN0tI0IkzkL6HXBFnaaAi?mode=ems_wa_c"
+             target="_blank" rel="noopener">
+            <i class="ri-whatsapp-line"></i> Community beitreten
+          </a>
+        </div>
+
+        <div class="col-lg-4 mb-4 mb-lg-0">
+          <h5>Navigation</h5>
+          <ul class="list-unstyled mb-0" style="line-height:2;">
+            <li><a href="index.html#upcoming">Kommende Events</a></li>
+            <li><a href="index.html#past">Vergangene Events</a></li>
+            <li><a href="index.html#about">Über uns</a></li>
+            <li><a href="index.html#contact">Kontakt</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4">
+          <h5>Rechtliches</h5>
+          <ul class="list-unstyled mb-0" style="line-height:2;">
+            <li><a href="agbs.html">AGBs</a></li>
+            <li><a href="dsgvo.html">DSGVO</a></li>
+            <li><a href="impressum.html">Impressum</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr style="border-color: rgba(255,255,255,.12);" class="my-4"/>
+
+      <div class="d-flex flex-column flex-md-row justify-content-between" style="color: rgba(255,255,255,.65);">
+        <div>© <script>document.write(new Date().getFullYear());</script> afiya.ch</div>
+        <div>Moments that matter</div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top" aria-label="Back to top">↑</a>
+
+  <!-- JS (Bootstrap 4) -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked@18.0.11/lib/marked.umd.js"></script>
+  <script src="js/legal-loader.js"></script>
+
+  <script>
+    // Back-to-top
+    const btt = document.querySelector('.back-to-top');
+    const toggle = () => btt.style.display = (window.scrollY > 320) ? 'inline-flex' : 'none';
+    window.addEventListener('scroll', toggle, { passive: true });
+    toggle();
+    btt.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
