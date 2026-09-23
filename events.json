@@ -1,0 +1,56 @@
+{
+  "upcoming": [
+    {
+      "title": "Garden Party",
+      "date": "So - 23.08",
+      "location": "Zürich",
+      "description": "Lust auf einen perfekten Sommernachmittag? Schnapp dir eine Picknickdecke und geniesse mit uns einen entspannten Sonntag mit tollen Gesprächen und guten Vibes.",
+      "image": "https://res.eventfrog.net/production_res_public/1-6YMTGLMO.webp",
+      "ticket_url": "https://eventfrog.ch/de/p/essen-trinken/afiya-garden-party-picknick-am-see-7491078937591722917.html",
+      "coming_soon": false,
+      "order": 1
+    },
+    {
+      "title": "Hiit & Apéro",
+      "date": "Sa - 05.09",
+      "location": "Zürich",
+      "description": "Egal, ob du Fitness-Profi bist oder neu startest – du bist herzlich willkommen! Starte deinen Samstagmorgen mit afiya und STAY TRUE STAY FIT.",
+      "image": "https://res.eventfrog.net/production_res_public/afiya-stsf-water-hydration-flyer-1786994283399.webp",
+      "ticket_url": "https://eventfrog.ch/de/p/sport-fitness/fitness/afiya-x-stsf-hiit-apero-sweat-connect-repeat-7495204632307756099.html",
+      "coming_soon": false,
+      "order": 2
+    },
+    {
+      "title": "Femme Friday",
+      "date": "Datum folgt",
+      "location": "Zürich",
+      "description": "Cheers to the Weekend! Schnapp dir einen Drink, lerne Frauen kennen und tausch dich in offener Atmosphäre aus.",
+      "image": "images/femme-friday.jpg",
+      "ticket_url": "https://www.instagram.com/afiyazurich",
+      "coming_soon": true,
+      "order": 3
+    }
+  ],
+  "past": [
+    {
+      "title": "Galentine bei Antin",
+      "image": "images/galentine_group.jpeg",
+      "order": 1
+    },
+    {
+      "title": "Weihnachtsmarkt Zürich",
+      "image": "images/christmas_market.jpeg",
+      "order": 2
+    },
+    {
+      "title": "Adventure Arena Dübendorf",
+      "image": "images/adventure_arena.jpeg",
+      "order": 3
+    },
+    {
+      "title": "Dinner & Talk",
+      "image": "images/SmileDinner.jpg",
+      "order": 4
+    }
+  ]
+}

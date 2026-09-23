@@ -1,0 +1,45 @@
+{
+  "hero": {
+    "kicker": "Moments that matter",
+    "heading": "Ein Raum für Dich.",
+    "subtitle": "Afiya ist deine Community - ein Ort, an dem Begegnungen Tiefe bekommen, Frauen einander stärken und Entwicklung zu einem gemeinsamen Erlebnis wird.",
+    "image": "images/afiya_hero.jpeg",
+    "location": "Region Zürich · Deutschschweiz"
+  },
+  "about": {
+    "kicker": "Unsere Vision",
+    "heading": "Individuell wachsen. Gemeinsam erleben.",
+    "vision_text": "Afiya hat die Mission, Frauen einen Raum zu bieten, in dem Begegnungen entstehen, Zugehörigkeit spürbar wird und gemeinsames Wachstum möglich ist. Hier entsteht ein Miteinander, das Vertrauen schenkt und Frauen verbindet.",
+    "values": [
+      {
+        "icon": "ri-sparkling-2-line",
+        "badge": "Erlebnisse",
+        "title": "Ausgewählte Events",
+        "description": "Wir gestalten Veranstaltungen in angenehmer Umgebung, die den Fokus auf das gemeinsame Erlebnis und Dein individuelles Wachstum legen."
+      },
+      {
+        "icon": "ri-group-line",
+        "badge": "Zugehörigkeit",
+        "title": "Das Netzwerk",
+        "description": "Eine Community für Frauen, die Interesse an neuen Perspektiven haben und den Austausch mit anderen suchen."
+      },
+      {
+        "icon": "ri-shield-check-line",
+        "badge": "Vertrauen",
+        "title": "Geschützter Rahmen",
+        "description": "Bewusst kleine Gruppengrössen und klare Werte sorgen für eine Atmosphäre, in der respektvoller Umgang im Mittelpunkt steht."
+      },
+      {
+        "icon": "ri-user-heart-line",
+        "badge": "Authentizität",
+        "title": "Persönlich & Nah",
+        "description": "Begegnungen finden hier direkt und ungefiltert statt. Ein Umfeld, das Raum lässt für Individualität und Offenheit."
+      }
+    ]
+  },
+  "social": {
+    "instagram": "https://www.instagram.com/afiyazurich",
+    "tiktok": "https://www.tiktok.com/@afiyazurich",
+    "whatsapp": "https://chat.whatsapp.com/LEN0tI0IkzkL6HXBFnaaAi?mode=ems_wa_c"
+  }
+}
